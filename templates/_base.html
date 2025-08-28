@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="{{ user_theme }}">
+<head>
+    <meta charset="UTF-8">
+
+    <title>{% block title %}{% endblock %}</title>
+    <style>
+         body.theme-white {
+            --bg-color: #ffffff;
+            --text-color: #000000;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+
+        body.theme-dark {
+            --bg-color: #1a1a1a;
+            --text-color: #ffffff;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+
+        body {
+            transition: background-color 0.3s, color 0.3s;
+        }
+    </style>
+</head>
+<body class="theme-{{ user_theme }}">
+{% if user.is_authenticated %}
+<a href="{% url 'app_theme:change_theme' 'white' %}">Светлая</a>
+<a href="{% url 'app_theme:change_theme' 'dark' %}">Темная</a>
+Тема: {{ user_theme }}
+{% endif %}
+{% block body %}{% endblock %}</body>
+</html>

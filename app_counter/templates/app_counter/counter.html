@@ -1,0 +1,20 @@
+{% extends "_base.html" %}
+{% block body %}
+<form action="{% url 'register_app:logout' %}" method = "post">
+        {% csrf_token %}
+        <button type="submit">Exit</button>
+    </form>
+<p><a href="{% url 'app_counter:index' %}">На главную</a> </p>
+{% if counter %}
+<p>Состояние счетчика <b>{{ counter.value }}</b></p>
+<p>
+    <a href="{% url 'app_counter:counter_decr' %}">-1</a>
+    <a href="{% url 'app_counter:counter_inc' %}">+1</a>
+</p>
+{% else %}
+<p>Нет счетчиков</p>
+<p>
+    <a href="{% url 'app_counter:counter_create' %}">Создать счетчик</a>
+</p>
+{% endif %}
+{% endblock %}
