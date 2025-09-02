@@ -119,3 +119,9 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+BOOTSTRAP5 = {
+    'error_css_class': 'django_bootstrap5-error',
+    'required_css_class': 'django_bootstrap5-required',
+    'javascript_in_head': True,
+}
