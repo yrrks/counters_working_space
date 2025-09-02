@@ -1,12 +1,26 @@
 {% extends "_base.html" %}
 
+{% load django_bootstrap5 %}
+
 {% block title %}Регистрация {% endblock %}
 {% block body %}
-    <h1>Registration</h1>
+<h1>Registration</h1>
+{% if not user.is_authenticated %}
     <form action="{% url 'register_app:register' %}" method="post">
         {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Reg</button>
-    </form>
+        {% bootstrap_form_errors form %}
+        {% bootstrap_form form layout=layout size=size %}
+        {% bootstrap_button button_type='submit' content='регистрация' %}
+        {% bootstrap_button button_type='reset' content='очистить' %}
 
+    </form>
+{% else %}
+<h1>Иди отсюда </h1>
+<a href="{% url 'app_counter:index' %}">На главную</a>
+<a href="{% url 'app_counter:counter' %}">Крутить счётчик</a>
+<form action="{% url 'register_app:logout' %}" method = "post">
+        {% csrf_token %}
+        <button type="submit">Exit</button>
+    </form>
+{% endif %}
 {% endblock %}
