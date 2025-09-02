@@ -5,12 +5,20 @@
         <button type="submit">Exit</button>
     </form>
 <p><a href="{% url 'app_counter:index' %}">На главную</a> </p>
-{% if counter %}
+{% if counters %}
+{% for counter in counters %}
+<a href="{% url 'app_counter:counter_create' %}">Создать счетчик</a>
 <p>Состояние счетчика <b>{{ counter.value }}</b></p>
 <p>
-    <a href="{% url 'app_counter:counter_decr' %}">-1</a>
-    <a href="{% url 'app_counter:counter_inc' %}">+1</a>
+    <a href="{% url 'app_counter:counter_decr' counter.id %}">-1</a>
+    <a href="{% url 'app_counter:counter_inc' counter.id %}">+1</a>
+    {% if counter.favorite %}
+        Избранный!!
+    {% else %}
+    <a href="{% url 'app_counter:choose_favorite' counter.id %}">Добавить в избранное</a>
+    {% endif %}
 </p>
+{% endfor %}
 {% else %}
 <p>Нет счетчиков</p>
 <p>

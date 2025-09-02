@@ -11,6 +11,7 @@ class Counter(models.Model):
         blank=True,
         related_name='counters'
     )
+    favorite = models.BooleanField(default=False)
 
     def __str__(self):
         return f"id={self.id} value={self.value}"
