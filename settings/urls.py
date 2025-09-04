@@ -7,4 +7,5 @@ urlpatterns = [
     path('', include('app_counter.urls')),
     path('accounts/', include('register_app.urls')),
     path('',include('app_theme.urls')),
+    path('',include('api.urls')),
 ]
