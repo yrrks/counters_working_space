@@ -5,9 +5,13 @@
         <button type="submit">Exit</button>
     </form>
 <p><a href="{% url 'app_counter:index' %}">На главную</a> </p>
+<form action="{% url 'api:new_counter' %}" method="post">
+    {% csrf_token %}
+    <button type="submit">Создать счетчик</button>
+</form>
+
 {% if counters %}
 {% for counter in counters %}
-<a href="{% url 'app_counter:counter_create' %}">Создать счетчик</a>
 <p>Состояние счетчика <b>{{ counter.value }}</b></p>
 <p>
     <a href="{% url 'app_counter:counter_decr' counter.id %}">-1</a>
