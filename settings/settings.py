@@ -33,7 +33,7 @@ INSTALLED_APPS = [
     # Свои приложения
     'app_counter',
     'register_app',
-    'app_theme'
+    'app_theme',
     'api',
 
 ]

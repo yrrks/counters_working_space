@@ -51,3 +51,4 @@ def choose_favorite(request,counter_id):
     counter = request.user.counters.filter(id=counter_id).update(favorite=True)
 
     return redirect('app_counter:counter')
+
